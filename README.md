@@ -1,11 +1,16 @@
 App Installer
----
+===
 
-# Install
 
+### Install
+
+```
 cordova plugin add https://github.com/simbas/cordova-plugin-app-installer
+```
 
 
-# Use
+### Use
 
+```javascript
 window.cordova.AppInstaller.downloadAndInstall("http://mydomain.com/myapp.apk");
+```
