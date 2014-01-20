@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="fr.smile.mobile.appinstaller" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>AppInstaller</name>
+    <description>Install an application</description>
+    <js-module name="AppInstaller" src="www/AppInstaller.js">
+        <clobbers target="cordova.AppInstaller"/>
+    </js-module>
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="AppInstaller">
+                <param name="android-package" value="fr.smile.mobile.appinstaller.AppInstaller"/>
+            </feature>
+        </config-file>
+        <config-file parent="/*" target="AndroidManifest.xml">
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+            <uses-permission android:name="android.permission.INSTALL_PACKAGES"/>
+            <uses-permission android:name="android.permission.RESTART_PACKAGES"/>
+        </config-file>
+        <source-file src="src/android/CDVAppInstaller.java" target-dir="src/fr/smile/mobile/appinstaller/AppInstaller"/>
+    </platform>
+    <dependency id="org.apache.cordova.file-transfer" url="https://github.com/apache/cordova-plugin-file-transfer" commit="r0.4.0" />
+</plugin>
