@@ -9,7 +9,7 @@
     <platform name="android">
         <config-file parent="/*" target="res/xml/config.xml">
             <feature name="AppInstaller">
-                <param name="android-package" value="fr.smile.mobile.appinstaller.AppInstaller"/>
+                <param name="android-package" value="fr.smile.mobile.appinstaller.CDVAppInstaller"/>
             </feature>
         </config-file>
         <config-file parent="/*" target="AndroidManifest.xml">
@@ -17,7 +17,7 @@
             <uses-permission android:name="android.permission.INSTALL_PACKAGES"/>
             <uses-permission android:name="android.permission.RESTART_PACKAGES"/>
         </config-file>
-        <source-file src="src/android/CDVAppInstaller.java" target-dir="src/fr/smile/mobile/appinstaller/AppInstaller"/>
+        <source-file src="src/android/CDVAppInstaller.java" target-dir="src/fr/smile/mobile/appinstaller"/>
     </platform>
     <dependency id="org.apache.cordova.file-transfer" url="https://github.com/apache/cordova-plugin-file-transfer" commit="r0.4.0" />
 </plugin>
