@@ -29,7 +29,7 @@ public class CDVAppInstaller extends CordovaPlugin {
             cordova.getActivity().startActivity(intent);
             callbackContext.success();
         } catch(Exception e) {
-            callbackContext.error(e);
+            callbackContext.error(e.toString());
         }
     }
 }
