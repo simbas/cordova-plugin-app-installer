@@ -22,7 +22,8 @@ angular.module('myModule')
     .service('appInstaller', function AppInstaller($window, $log, $q) {
         this.install = function (url) {
             if (!$window.cordova || !$window.cordova.AppInstaller) {
-                throw new Error('Cordova app installer plugin not found.');
+                $log.error('Cordova app installer plugin not found.');
+                return ;
             }
             var deferred = $q.defer();
             $window.cordova.AppInstaller.downloadAndInstall(url, deferred.resolve, deferred.reject);
