@@ -28,7 +28,7 @@ public class CDVAppInstaller extends CordovaPlugin {
             intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
             cordova.getActivity().startActivity(intent);
             callbackContext.success();
-        } catch(e) {
+        } catch(Exception e) {
             callbackContext.error(e);
         }
     }
