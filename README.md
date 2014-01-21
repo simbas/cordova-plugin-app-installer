@@ -15,7 +15,7 @@ cordova plugin add https://github.com/simbas/cordova-plugin-app-installer
 window.cordova.AppInstaller.downloadAndInstall("http://mydomain.com/myapp.apk");
 ```
 
-### Angular implementation exemple
+### Angular example
 
 ```javascript
 angular.module('myModule')
