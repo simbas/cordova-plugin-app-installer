@@ -15,16 +15,16 @@ public class CDVAppInstaller extends CordovaPlugin {
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         if ("install".equals(action)) {
-            String uri = args.getString(0);
-            this.install(uri, callbackContext);
+            String path = args.getString(0);
+            this.install(path, callbackContext);
             return true;
         }
         return false;
     }
 
-    private void install(String uri, CallbackContext callbackContext) {
+    private void install(String path, CallbackContext callbackContext) {
         try {
-            Intent intent = new Intent(Intent.ACTION_VIEW).setDataAndType(Uri.parse(uri), "application/vnd.android.package-archive");
+            Intent intent = new Intent(Intent.ACTION_VIEW).setDataAndType(Uri.parse("file:///sdcard/"+path), "application/vnd.android.package-archive");
             intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
             cordova.getActivity().startActivity(intent);
             callbackContext.success();

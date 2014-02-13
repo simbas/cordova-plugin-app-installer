@@ -9,14 +9,14 @@ var AppInstaller = function () {
 
 AppInstaller.prototype = {
     downloadAndInstall: function (url, success, error) {
-        var filePath = 'download/appToInstall.apk';
+        var filePath = 'Download/appToInstall.apk';
         var onRequestFileSystemSuccess = function (fileSystem) {
             var getFileSuccess = function (fileEntry) {
                 var fileTransfer = new FileTransfer();
                 var uri = encodeURI(url);
-                fileTransfer.download(uri, fileEntry.fullPath,
+                fileTransfer.download(uri, fileEntry.toURL(),
                     function (entry) {
-                        exec(success, error, 'AppInstaller', 'install', [entry.fullPath]);
+    	            	exec(success, error, 'AppInstaller', 'install', [entry.fullPath]);
                     },
                     error
                 );
