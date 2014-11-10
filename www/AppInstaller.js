@@ -8,12 +8,17 @@ var AppInstaller = function () {
 };
 
 AppInstaller.prototype = {
-    downloadAndInstall: function (url, success, error) {
+    downloadAndInstall: function (url, success, error, onProgress) {
         var filePath = 'Download/appToInstall.apk';
         var onRequestFileSystemSuccess = function (fileSystem) {
             var getFileSuccess = function (fileEntry) {
                 var fileTransfer = new FileTransfer();
                 var uri = encodeURI(url);
+		if(onProgress){
+		    fileTransfer.onprogress = function(progressEvent) {
+			onProgress(progressEvent);
+		    };
+		}
                 fileTransfer.download(uri, fileEntry.toURL(),
                     function (entry) {
     	            	exec(success, error, 'AppInstaller', 'install', [entry.fullPath]);

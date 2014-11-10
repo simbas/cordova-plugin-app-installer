@@ -12,7 +12,16 @@ cordova plugin add https://github.com/simbas/cordova-plugin-app-installer
 ### How to use
 
 ```javascript
-window.cordova.AppInstaller.downloadAndInstall("http://mydomain.com/myapp.apk");
+window.cordova.AppInstaller.downloadAndInstall("http://mydomain.com/myapp.apk", function(){
+	console.log('install ok');
+}, function(err){
+	console.log(err);
+}, function(progressEvent){
+	if (progressEvent.lengthComputable) {
+		progress = progressEvent.loaded / progressEvent.total;
+		console.log(progress);
+	}
+});
 ```
 
 ### Angular example
